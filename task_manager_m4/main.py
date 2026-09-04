@@ -23,7 +23,7 @@ def main():
             
             success, message = add_task(title, description, due_date)
             print(message)
-
+            
         elif choice == "2":
             pending = view_pending_tasks()
             if not pending:
@@ -42,26 +42,26 @@ def main():
                         print("Invalid task number.")
                 except ValueError:
                     print("Please enter a valid number.")
-
+            
         elif choice == "3":
-                    pending = view_pending_tasks()
-                    if not pending:
-                        print("No pending tasks.")
-                    else:
-                        print("\n--- Pending Tasks ---")
-                        for i, task in enumerate(pending):
-                            print(f"{i+1}. {task['title']} - {task['description']} (Due: {task['due_date']})")
-                    
+            pending = view_pending_tasks()
+            if not pending:
+                print("No pending tasks.")
+            else:
+                print("\n--- Pending Tasks ---")
+                for i, task in enumerate(pending):
+                    print(f"{i+1}. {task['title']} - {task['description']} (Due: {task['due_date']})")
+            
         elif choice == "4":
-                    progress, message = calculate_progress()
-                    print(message)
-                    
+            progress, message = calculate_progress()
+            print(message)
+            
         elif choice == "5":
-                    print("Exiting the program")
-                    break
-                    
+            print("Exiting the program")
+            break
+            
         else:
-                    print("Invalid choice. Please try again.")
-        
-        if __name__ == "__main__":
-            main()
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
