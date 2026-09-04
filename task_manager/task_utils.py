@@ -25,3 +25,31 @@ def add_task(title, description, due_date):
     }
     tasks.append(task)
     return True, "Task added successfully!"
+
+def mark_task_as_complete(index, tasks=tasks):
+    if 0 <= index < len(tasks):
+        if tasks[index]["completed"]:
+            return False, "Task is already completed"
+        tasks[index]["completed"] = True
+        return True, "Task marked as complete!"
+    return False, "Invalid task index"
+
+def view_pending_tasks(tasks=tasks):
+    pending = []
+    for task in tasks:
+        if not task["completed"]:
+            pending.append(task)
+    return pending
+
+def calculate_progress(tasks=tasks):
+    if not tasks:
+        return 0, "No tasks yet"
+    
+    total = len(tasks)
+    completed = 0
+    for task in tasks:
+        if task["completed"]:
+            completed += 1
+    
+    progress = (completed / total) * 100
+    return progress, f"Progress: {progress:.1f}% ({completed}/{total} completed)"
